@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { Inter, Lexend } from "next/font/google";
+import clsx from "clsx";
+
+import "@/styles/tailwind.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const lexend = Lexend({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-lexend",
+});
 
 export const metadata: Metadata = {
   title: "React Hinglish - Learn React in Hinglish with Memes and Fun!",
@@ -13,7 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={clsx("h-full antialiased", inter.variable, lexend.variable)}
+      suppressHydrationWarning
+    >
       <body className="antialiased">{children}</body>
     </html>
   );
